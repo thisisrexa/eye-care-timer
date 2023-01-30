@@ -1,23 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import Ding from "./components/Ding";
 import "./App.css";
+import getTimeRemaining from "./utils/getTimeRemaining";
 
 function App() {
   const Ref = useRef(null);
   const [timer, setTimer] = useState("00:20:00");
-
-  const getTimeRemaining = (e) => {
-    const total = Date.parse(e) - Date.parse(new Date());
-    const seconds = Math.floor((total / 1000) % 60);
-    const minutes = Math.floor((total / 1000 / 60) % 60);
-    const hours = Math.floor((total / 1000 / 60 / 60) % 24);
-    return {
-      total,
-      hours,
-      minutes,
-      seconds,
-    };
-  };
+  const [show, setShow] = useState(false);
 
   const startTimer = (e) => {
     let { total, hours, minutes, seconds } = getTimeRemaining(e);
@@ -47,21 +36,36 @@ function App() {
   const getDeadTime = () => {
     let deadline = new Date();
     // 20min = 1200s
+    // Get the current minutes of time
     deadline.setSeconds(deadline.getSeconds() + 1200);
     return deadline;
   };
 
   useEffect(() => {
-    clearTimer(getDeadTime());
+    // clearTimer(getDeadTime());
   }, []);
 
   const onClickReset = () => {
     clearTimer(getDeadTime());
   };
 
+  const onClickShow = () => {
+    setShow(true);
+    clearTimer(getDeadTime());
+  };
+
   return (
-    <div>
-      <Ding endOfTime={timer === "00:00:00" ? true : false} timer={timer} reset={onClickReset} />
+    <div className="App">
+      <Ding
+        endOfTime={timer === "00:00:00" ? true : false}
+        timer={timer}
+        reset={onClickReset}
+        show={show}
+      />
+      {show === false ? <button onClick={onClickShow}>Start</button> : null}
+        <p>Pls allow sound & notifications permissons to your browser. Tnx!</p>
+        <p>Coded by <a href="https://github.com/r3x4w" target={"_blank"}>
+          @r3x4w</a></p>
     </div>
   );
 }

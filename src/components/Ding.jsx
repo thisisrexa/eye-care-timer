@@ -1,20 +1,25 @@
-import Sound from "react-sound";
+import { useRef, useEffect } from 'react';
+import { notifyMe, n } from '../utils/notify';
 
-export default function Ding(props) {
-  if (props.endOfTime) {
-    setTimeout(() => {
-      props.reset();
-    }, 20000);
+export default function Ding({ endOfTime, reset, timer, show }) {
+  // 20s
+  useEffect(() => {
+    if (endOfTime) {
+      notifyMe();
+      setTimeout(() => {
+        n.close()
+        reset();
+      }, 20000);
+    }
+  }, [endOfTime]);
+
+  if (endOfTime) {
     return (
       <>
-      <Sound
-        url="../public/wide-putin-walkin.mp3"
-        playStatus={Sound.status.PLAYING}
-        loop={true}
-      />
-      <h2>End</h2>
+        <h2>Rest Time</h2>
       </>
     );
   }
-  return <h2>{props.timer}</h2>;
+
+  return <>{show && <h2>{timer}</h2>}</>;
 }
