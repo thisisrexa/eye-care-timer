@@ -7,7 +7,7 @@ export default function Ding({ endOfTime, reset, timer, show }) {
     if (endOfTime) {
       notifyMe();
       setTimeout(() => {
-        n.close()
+        n.close();
         reset();
       }, 20000);
     }
