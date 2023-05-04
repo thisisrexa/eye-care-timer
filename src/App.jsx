@@ -19,7 +19,7 @@ export default function App() {
     <div className='App'>
       <button onClick={handleToggleRunning}>
         {running ? (
-          <Timer play={play} running={running} seconds={20 * 60} />
+          <Timer play={play} running={running} seconds={1200} />
         ) : (
           'Start'
         )}

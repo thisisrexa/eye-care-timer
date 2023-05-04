@@ -5,6 +5,7 @@ import formatTime from '../utils/formatTime';
 
 export default function Timer({ play, running, seconds }) {
 	const [time, setTime] = useState(new Date(0, 0, 0, 0, 0, seconds));
+	const [restTime, setRestTime] = useState(false)
 
 	useEffect(() => {
 		if (!running) {
@@ -19,13 +20,17 @@ export default function Timer({ play, running, seconds }) {
 
 	useEffect(() => {
 		if (time.getTime() === new Date(0, 0, 0, 0, 0, 0).getTime()) {
-			play();
-			notifyMe();
-			setTime(new Date(0, 0, 0, 0, 0, seconds));
+				play();
+				notifyMe();
+				setRestTime(true)
+				const timeoutID = setTimeout(() => {
+					setRestTime(false)
+					setTime(new Date(0, 0, 0, 0, 0, seconds))
+			}, 20000)
 		}
-
 		return;
+		return () => clearTimeout(timeoutID);
 	}, [time]);
 
-	return <h1>{formatTime(time)}</h1>;
+	return restTime ? <h1>Rest Time</h1> : <h1>{formatTime(time)}</h1>;
 }
