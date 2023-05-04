@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import useSound from 'use-sound';
+import { Analytics } from '@vercel/analytics/react';
 
 import Timer from './components/Timer';
 import { notifyMe } from './utils/notify';
@@ -24,6 +25,7 @@ export default function App() {
           'Start'
         )}
       </button>
+      <Analytics />
     </div>
   );
 }

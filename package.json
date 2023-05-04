@@ -10,6 +10,7 @@
     "prettier": "prettier --config .prettierrc --write \"src/**/*.{js,ts,jsx,tsx,css,scss}\""
   },
   "dependencies": {
+    "@vercel/analytics": "^1.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "use-sound": "^4.0.1"
