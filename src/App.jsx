@@ -26,6 +26,14 @@ export default function App() {
         )}
       </button>
       <Analytics />
+      <footer>
+        <p>
+        Coded by{' '}
+        <a href='https://github.com/r3x4w' target='_blank'>
+          @r3x4w
+        </a>
+      </p>
+      </footer>
     </div>
   );
 }
