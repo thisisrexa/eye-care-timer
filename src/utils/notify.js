@@ -1,6 +1,6 @@
 const options = {
-  title: 'وقت استراحته!',
-  body: 'من که برنامه م خسته شدم چشات هنوز خسته نشدن؟ :( لطفا 20 ثانیه به فاصله 20 متری نگاه کن.',
+  title: 'Rest Time!',
+  body: 'Please look into the far distance for twenty seconds.',
   icon: 'timer.png',
 };
 
