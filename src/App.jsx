@@ -29,8 +29,8 @@ export default function App() {
       <footer>
         <p>
         Coded by{' '}
-        <a href='https://github.com/r3x4w' target='_blank'>
-          @r3x4w
+        <a href='https://github.com/thisisrexa' target='_blank'>
+          @thisisrexa
         </a>
       </p>
       </footer>
