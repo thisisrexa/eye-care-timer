@@ -1,3 +1,5 @@
+![Eye Care Timer Demo](https://demo.rexadev.ir/assets/eye-care-timer.png)
+
 ## Introduction 
 
 ### The "20-20-20" Rule:
